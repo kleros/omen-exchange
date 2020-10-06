@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const Kleros = () => (
+export const IconKleros = () => (
   <svg
     height="16pt"
-    viewBox="0 0 17 16"
-    width="17pt"
+    viewBox="0 0 16 16"
+    width="16pt"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
