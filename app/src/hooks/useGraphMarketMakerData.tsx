@@ -47,6 +47,8 @@ const query = gql`
         data
       }
       klerosTCRregistered
+      curatedByDxDaoOrKleros
+      curatedByDxDao
     }
   }
 `
