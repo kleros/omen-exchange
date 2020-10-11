@@ -139,6 +139,7 @@ export const useBlockchainMarketMakerData = (graphMarketMakerData: Maybe<GraphMa
       curatedByDxDaoOrKleros: graphMarketMakerData.curatedByDxDaoOrKleros,
       runningDailyVolumeByHour: graphMarketMakerData.runningDailyVolumeByHour,
       lastActiveDay: graphMarketMakerData.lastActiveDay,
+      submissionIDs: graphMarketMakerData.submissionIDs,
     }
 
     setMarketMakerData(newMarketMakerData)
