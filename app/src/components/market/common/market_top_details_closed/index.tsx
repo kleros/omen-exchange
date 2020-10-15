@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import { useConnectedWeb3Context, useGraphMarketMakerData } from '../../../../hooks'
 import { useGraphMarketsFromQuestion } from '../../../../hooks/useGraphMarketsFromQuestion'
+import { getContractAddress } from '../../../../util/networks'
 import { MarketMakerData, Token } from '../../../../util/types'
 import { SubsectionTitleWrapper } from '../../../common'
 import { AdditionalMarketData } from '../additional_market_data'
@@ -46,7 +47,10 @@ const MarketTopDetailsClosed: React.FC<Props> = (props: Props) => {
     lastActiveDay,
     question,
     runningDailyVolumeByHour,
+    submissionIDs,
   } = marketMakerData
+  const { title } = question
+  const ovmAddress = getContractAddress(context.networkId, 'omenVerifiedMarkets')
 
   const [showingProgressBar, setShowingProgressBar] = useState(false)
 
@@ -119,11 +123,15 @@ const MarketTopDetailsClosed: React.FC<Props> = (props: Props) => {
         runningDailyVolumeByHour={runningDailyVolumeByHour}
       ></MarketData>
       <AdditionalMarketData
+        address={address}
         arbitrator={arbitrator}
         category={question.category}
+        curatedByDxDaoOrKleros={isVerified}
         id={question.id}
-        oracle="Reality"
-        verified={isVerified}
+        oracle="Reality.eth"
+        ovmAddress={ovmAddress}
+        submissionIDs={submissionIDs}
+        title={title}
       ></AdditionalMarketData>
     </>
   )

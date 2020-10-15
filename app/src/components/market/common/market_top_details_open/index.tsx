@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { IMPORT_QUESTION_ID_KEY } from '../../../../common/constants'
 import { useConnectedWeb3Context, useGraphMarketMakerData } from '../../../../hooks'
 import { useGraphMarketsFromQuestion } from '../../../../hooks/useGraphMarketsFromQuestion'
+import { getContractAddress } from '../../../../util/networks'
 import { MarketMakerData, Token } from '../../../../util/types'
 import { SubsectionTitleWrapper } from '../../../common'
 import { MoreMenu } from '../../../common/form/more_menu'
@@ -49,9 +50,11 @@ const MarketTopDetailsOpen: React.FC<Props> = (props: Props) => {
     lastActiveDay,
     question,
     runningDailyVolumeByHour,
+    submissionIDs,
   } = marketMakerData
 
   const useGraphMarketMakerDataResult = useGraphMarketMakerData(address, context.networkId)
+  const ovmAddress = getContractAddress(context.networkId, 'omenVerifiedMarkets')
   const creationTimestamp: string = useGraphMarketMakerDataResult.marketMakerData
     ? useGraphMarketMakerDataResult.marketMakerData.creationTimestamp
     : ''
@@ -149,11 +152,15 @@ const MarketTopDetailsOpen: React.FC<Props> = (props: Props) => {
         runningDailyVolumeByHour={runningDailyVolumeByHour}
       ></MarketData>
       <AdditionalMarketData
+        address={address}
         arbitrator={arbitrator}
         category={question.category}
+        curatedByDxDaoOrKleros={isVerified}
         id={question.id}
-        oracle="Reality"
-        verified={isVerified}
+        oracle="Reality.eth"
+        ovmAddress={ovmAddress}
+        submissionIDs={submissionIDs}
+        title={question.title}
       ></AdditionalMarketData>
     </>
   )
