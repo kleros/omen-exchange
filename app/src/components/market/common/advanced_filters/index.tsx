@@ -122,7 +122,7 @@ export const AdvancedFilters = (props: Props) => {
           content: (
             <CurationSourceWrapper>
               <LogoWrapper>
-                <Kleros />
+                <IconKleros />
               </LogoWrapper>
               {name}
             </CurationSourceWrapper>
