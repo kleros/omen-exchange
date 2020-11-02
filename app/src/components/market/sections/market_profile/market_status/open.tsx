@@ -235,7 +235,11 @@ const Wrapper = (props: Props) => {
           <MarketSellContainer marketMakerData={marketMakerData} switchMarketTab={switchMarketTab} />
         )}
         {currentTab === marketTabs.verify && (
-          <MarketVerifyContainer context={context} marketMakerData={marketMakerData} />
+          <MarketVerifyContainer
+            context={context}
+            marketMakerData={marketMakerData}
+            switchMarketTab={switchMarketTab}
+          />
         )}
       </BottomCard>
     </>
